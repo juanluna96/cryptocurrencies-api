@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import useMoneda from '../hooks/useMoneda'
 import useCriptomoneda from '../hooks/useCriptomoneda'
+import Error from './Error';
 
 const Boton = styled.button`
   margin-top: 20px;
@@ -33,8 +34,8 @@ const Formulario = () => {
   // Arreglo de monedas/divisas
   const MONEDAS = [
     { codigo: 'USD', nombre: 'Dolar de estados unidos' },
-    { codigo: 'MXN', nombre: 'Peso mexicano' },
     { codigo: 'COP', nombre: 'Peso colombiano' },
+    { codigo: 'MXN', nombre: 'Peso mexicano' },
     { codigo: 'EUR', nombre: 'Euro' },
     { codigo: 'GBP', nombre: 'Libra exterlina' },
   ]
@@ -74,7 +75,7 @@ const Formulario = () => {
 
   return (
     <form onSubmit={ cotizarMoneda }>
-      {error ? 'Hay un error' : null }
+      {error ? <Error mensaje='Todos los campos son obligatorios'></Error> : null }
       <SelectMonedas></SelectMonedas>
       <SeleccionarCripto></SeleccionarCripto>
       <Boton type="submit">CALCULAR</Boton>
