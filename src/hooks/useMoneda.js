@@ -1,4 +1,25 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react';
+import styled from 'styled-components';
+
+const Label = styled.label`
+    font-family: 'Bebas Neue', cursive;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 2.4rem;
+    display: block;
+`;
+
+const Select = styled.select`
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5rem;
+    width: 100%;
+    display: block;
+    padding: 1rem;
+    -webkit-appearance: none;
+    border-radius: 1px;
+    border: none;
+`;
 
 const useMoneda = (label, stateInicial, opciones) => {
 
@@ -8,13 +29,13 @@ const useMoneda = (label, stateInicial, opciones) => {
     const Seleccionar = () => {
         return (
             <Fragment>
-                <label>{ label }</label>
-                <select name="" id="" onChange={ e => setState(e.target.value) } value={ state }>
+                <Label>{ label }</Label>
+                <Select name="" id="" onChange={ e => setState(e.target.value) } value={ state }>
                     <option value="">-- Seleccione una divisa --</option>
                     { opciones.map(opcion => (
                         <option key={ opcion.codigo } value={ opcion.codigo }>{ opcion.nombre }</option>
                     )) }
-                </select>
+                </Select>
             </Fragment>
         )
     };
