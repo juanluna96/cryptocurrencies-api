@@ -33,9 +33,9 @@ const useCriptomoneda = (label, stateInicial, opciones) => {
                 <Label>{ label }</Label>
                 <Select name="" id="" onChange={ e => setState(e.target.value) } value={ state }>
                     <option value="">-- Seleccione una divisa --</option>
-                    {/* { opciones.map(opcion => (
-                        <option key={ opcion.codigo } value={ opcion.codigo }>{ opcion.nombre }</option>
-                    )) } */}
+                    { opciones.map(opcion => (
+                        <option key={ opcion.CoinInfo.Id } value={ opcion.CoinInfo.Name }>{ opcion.CoinInfo.FullName }</option>
+                    )) }
                 </Select>
             </Fragment>
         )
