@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import useMoneda from '../hooks/useMoneda'
+import useCriptomoneda from '../hooks/useCriptomoneda'
 
 const Boton = styled.button`
   margin-top: 20px;
@@ -23,24 +24,28 @@ const Boton = styled.button`
 
 const Formulario = () => {
 
-    // Arreglo de monedas/divisas
-    const MONEDAS = [
-        { codigo: 'USD', nombre: 'Dolar de estados unidos' },
-        { codigo: 'MXN', nombre: 'Peso mexicano' },
-        { codigo: 'COP', nombre: 'Peso colombiano' },
-        { codigo: 'EUR', nombre: 'Euro' },
-        { codigo: 'GBP', nombre: 'Libra exterlina' },
-    ]
+  // Arreglo de monedas/divisas
+  const MONEDAS = [
+    { codigo: 'USD', nombre: 'Dolar de estados unidos' },
+    { codigo: 'MXN', nombre: 'Peso mexicano' },
+    { codigo: 'COP', nombre: 'Peso colombiano' },
+    { codigo: 'EUR', nombre: 'Euro' },
+    { codigo: 'GBP', nombre: 'Libra exterlina' },
+  ]
 
-    // Utilizar use moneda
-    const [moneda, SelectMonedas, setState] = useMoneda('Elige tu moneda', '', MONEDAS);
+  // Utilizar use moneda
+  const [moneda, SelectMonedas, setState] = useMoneda('Elige tu moneda', '', MONEDAS);
 
-    return (
-        <form action="">
-            <SelectMonedas></SelectMonedas>
-            <Boton type="submit">CALCULAR</Boton>
-        </form>
-    )
+  // Utilizar useCriptomoneda
+  const [criptomoneda, SeleccionarCripto] = useCriptomoneda('Elige tu criptomoneda', '');
+
+  return (
+    <form action="">
+      <SelectMonedas></SelectMonedas>
+      <SeleccionarCripto></SeleccionarCripto>
+      <Boton type="submit">CALCULAR</Boton>
+    </form>
+  )
 }
 
 export default Formulario
